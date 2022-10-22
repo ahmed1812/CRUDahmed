@@ -55,5 +55,26 @@ namespace CRUDahm.Controllers
             }
             return View(item);
         }
+
+        public IActionResult Delete(int id)
+        {
+            var book = _context.BookList.Find(id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+            return View(book);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(BookList item)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Remove(item);
+                _context.SaveChanges();
+            }
+            return View(item);
+        }
     }
 }
