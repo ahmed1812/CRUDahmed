@@ -26,7 +26,7 @@ namespace CRUDahm
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<BookContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BookContext")));
+            services.AddDbContext<BookContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
